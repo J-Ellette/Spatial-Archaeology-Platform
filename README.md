@@ -1,6 +1,6 @@
 # Archaeological Discovery Explorer — Prototype
 
-This project is a minimal prototype for an archaeological discovery app that uses free Earth observation and elevation data sources (Sentinel, Landsat, USGS DEM/LiDAR, NOAA coastal LiDAR, NASA GEDI, etc.). It demonstrates a GUI to draw an AOI and a backend endpoint that searches for Sentinel products (as an example). Use this as a basis to add additional connectors and processing.
+This project is a minimal prototype for an archaeological discovery app that uses free Earth observation and elevation data sources (USGS DEM/LiDAR, NOAA coastal LiDAR, NASA, etc.). It demonstrates a GUI to draw an AOI and a backend endpoint that searches for Sentinel products (as an example). Use this as a basis to add additional connectors and processing.
 
 Architecture
 - Frontend: Leaflet map with drawing controls to select AOI and request data.
@@ -12,28 +12,14 @@ Important data sources to integrate
 - USGS EarthExplorer / The National Map (Landsat, aerial imagery, DEM/LiDAR)
 - NOAA Data Access Viewer (coastal LiDAR, aerial)
 - NASA Earthdata Search (GEDI, other mission data)
-- Copernicus / Sentinel Hub / Open Access Hub (Sentinel-1 & Sentinel-2)
-- Sentinel Hub / EO Browser for previews and easy downloads
 
 Prototype features
 - Draw AOI in web GUI
 - POST AOI to backend to search Sentinel (example)
 - Backend returns product metadata and download status
 
-Quick start (local)
-1. Copy .env.example to `.env` and fill in credentials:
-   - SENTINEL_USER and SENTINEL_PASSWORD (or use token), and other provider credentials when you add connectors.
-2. Create a virtualenv and install:
-   - `python -m venv venv && source venv/bin/activate`
-   - `pip install -r backend/requirements.txt`
-3. Run the backend:
-   - `uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000`
-4. Serve the frontend statically (open `frontend/index.html` in a browser) or use a tiny webserver:
-   - `python -m http.server --directory frontend 8080` then open http://localhost:8080
-
 Notes about API credentials and accounts
 - NASA Earthdata requires registration — you'll receive a username/password for programmatic downloads (use requests with HTTP basic auth or oauth when required).
-- Copernicus Open Access Hub / Sentinel Hub require registration (Sentinel Hub provides APIs and tokens; alternatively, public Sentinel data is available via AWS Open Data).
 - USGS has APIs and login flows for some services (register and obtain an API key if needed).
 - NOAA Datasets are often open but some APIs require token or request limits.
 
