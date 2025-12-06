@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+sentinelsat
+shapely
+python-dotenv
+rasterio
+requests
+pydantic
